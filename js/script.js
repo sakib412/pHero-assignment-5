@@ -58,6 +58,35 @@ function calculate() {
     const balance = income - totalExpenses;
     setTextToElement('total-expenses', totalExpenses);
     setTextToElement('balance', balance);
-    console.log(totalExpenses, balance)
-
+    console.log(totalExpenses, balance);
 }
+
+// when click save button
+document.getElementById('save-button').addEventListener('click', function () {
+    const percentage = getInputValue('save-input');
+    const income = getInputValue('income');
+    const balance = Number(document.getElementById('balance').innerText);
+    // if something went wrong with input then return the function, do nothing.         
+    if (percentage.toString() == 'NaN' ||
+        balance.toString() == 'NaN' ||
+        income.toString() == 'NaN') {
+        return;
+    }
+    if (percentage > 100) {
+        const toast = showToast("Please input 100 or less.");
+        toast.show();
+        return;
+    }
+
+    const savingAmount = (income * percentage) / 100;
+    setTextToElement('saving-amount', savingAmount);
+    // show error if saving amoun is bigger than balance
+    if (savingAmount > balance) {
+        const toast = showToast("You don't have much money to save.");
+        toast.show();
+        return;
+    }
+    const remainingBalance = balance - savingAmount;
+
+    setTextToElement('remaining-balance', remainingBalance);
+})
