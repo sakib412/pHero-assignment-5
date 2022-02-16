@@ -58,7 +58,6 @@ function calculate() {
     const balance = income - totalExpenses;
     setTextToElement('total-expenses', totalExpenses);
     setTextToElement('balance', balance);
-    console.log(totalExpenses, balance);
 }
 
 // when click save button
@@ -87,6 +86,5 @@ document.getElementById('save-button').addEventListener('click', function () {
         return;
     }
     const remainingBalance = balance - savingAmount;
-
     setTextToElement('remaining-balance', remainingBalance);
 })
