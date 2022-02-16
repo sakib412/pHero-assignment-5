@@ -13,7 +13,81 @@
 </head>
 
 <body>
-    <h1>Project init</h1>
+    <header>
+        <h2 class="text-center text-primary mt-4">Smart Budget</h2>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="img-fluid" src="img/budget.jpg" alt="Budget">
+                </div>
+                <div class="col-md-6 ps-3">
+                    <h4 class="text-center mt-3">Income</h4>
+                    <div class="row my-3 d-flex justify-content-center">
+                        <label for="income" class="col-sm-2 ms-2 col-form-label">Income:</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" placeholder="10000" id="income">
+                        </div>
+                    </div>
+                    <h4 class="text-center">Expenses</h4>
+                    <div class="row my-3 d-flex justify-content-center">
+                        <label for="income" class="col-sm-2 ms-2 col-form-label">Food:</label>
+                        <div class="col-sm-5">
+                            <input type="text" placeholder="3000" class="form-control" id="food">
+                        </div>
+                    </div>
+                    <div class="row my-3 d-flex justify-content-center">
+                        <label for="income" class="col-sm-2 ms-2 col-form-label">Rent:</label>
+                        <div class="col-sm-5">
+                            <input type="text" placeholder="2000" class="form-control" id="rent">
+                        </div>
+                    </div>
+                    <div class="row my-3 d-flex justify-content-center">
+                        <label for="income" class="col-sm-2 ms-2 col-form-label">Clothes:</label>
+                        <div class="col-sm-5">
+                            <input type="text" placeholder="500" class="form-control" id="clothes">
+                        </div>
+                    </div>
+                    <div class="row my-3 d-flex justify-content-center">
+                        <!-- call calculate function onclick -->
+                        <button id="calculate-btn" onclick="calculate()"
+                            class="col-sm-3 shadow-sm btn btn-primary">Calculate</button>
+                    </div>
+                    <h6 class="text-center mb-3">Total Expenses: <span id="total-expenses">5500</span></h6>
+                    <h6 class="text-center">Balance: <span id="balance">4500</span></h6>
+
+                    <div class="row mb-3 mt-4 d-flex justify-content-center align-items-center">
+                        <div class="col-sm-2 col-2">Save</div>
+                        <div class="col-sm-2 col-3">
+                            <input id="save-input" placeholder="20" class="form-control" type="text">
+                        </div>
+                        <div class="col-1">%</div>
+                        <div class="col-2"><button id="save-button" class="btn btn-primary">Save</button></div>
+
+                    </div>
+                    <h6 class="text-center mb-3">Saving Amount: <span id="saving-amount">2000</span></h6>
+                    <h6 class="text-center">Remaining Balance: <span id="remaining-balance">2500</span></h6>
+
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+
+    <!-- BS Toast -->
+    <div class="toast-container position-absolute top-0 end-0 pt-3 pe-5">
+        <div class="toast align-items-center bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div id="toast-msg" class="toast-body text-white">
+                    Hello, world! This is a toast message.
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
