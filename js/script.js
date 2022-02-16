@@ -19,15 +19,21 @@ function getInputValue(inputID) {
         const toast = showToast("Please inpput a number to " + inputID);
         toast.show();
     }
-    const v = Number(value);
+    const numberedValue = Number(value);
     // if input value is less then 0 then show an error
-    if (v < 0) {
+    if (numberedValue < 0) {
         const toast = showToast("Please inpput a positive number to " + inputID);
         toast.show();
         return NaN;
     }
 
-    return v;
+    return numberedValue;
+}
+
+
+// set element text 
+function setTextToElement(elID, text) {
+    document.getElementById(elID).innerText = text;
 }
 
 // calculate expenses and balance
@@ -37,13 +43,21 @@ function calculate() {
     const rent = getInputValue('rent');
     const clothes = getInputValue('clothes');
     const totalExpenses = food + rent + clothes;
-    console.log(totalExpenses.toString() == 'NaN')
     // if something went wrong with input then return the function, do nothing.         
-    if (totalExpenses.toString() == 'NaN') {
+    if (totalExpenses.toString() == 'NaN' || income.toString() == 'NaN') {
+        return;
+    }
+
+    // Check if expenses bigger than income then show an error
+    if (totalExpenses > income) {
+        const toast = showToast("Your expenses is bigger than income, please try to reduce expenses or income more");
+        toast.show();
         return;
     }
 
     const balance = income - totalExpenses;
+    setTextToElement('total-expenses', totalExpenses);
+    setTextToElement('balance', balance);
     console.log(totalExpenses, balance)
 
 }
